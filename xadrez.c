@@ -5,11 +5,14 @@
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
 int main() {
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
+    // Nível Aventureiro - Movimentação do Cavalo
+    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
+    // Um loop pode representar a movimentação horizontal e outro vertical.
+    
     // Declaração das variáveis
     int torre = 1;
     int bispo = 1;
+    int cavalo = 1;
 
     // Movimentação torre
     // Cabeçalho movimento torre
@@ -37,25 +40,30 @@ int main() {
     printf("\n");
     printf("Movimentação da Rainha\n");
     printf("=====================\n");
-    for (int rainha = 1; rainha <= 8; rainha++) // Executa o comando enquanto a variável rainha seja menor ou igual a 8
+    
+    for (int rainha = 1; rainha <= 8; rainha++) // Executa o comando enquanto a variável rainha for menor ou igual a 8, incrementa 1 a variável rainha até que se torne maior que 8 e encerre o loop 
     {
-        printf("Esquerda \n", rainha); // Imprime "Esquerda" no terminal até que "rainha" se torne menor ou igual a 8
+        printf("Esquerda \n", rainha); // Imprime "Esquerda" no terminal até que "rainha" se torne maior ou igual a 8
+    }
+    
+    // Movimentação cavalo
+    // Duas casas para baixo e uma para esquerda
+    printf("\n");
+    printf("Movimentação do Cavalo\n");
+    printf("=====================\n");
+    while (cavalo == 1) // Executa o comando enquanto a variável cavalo for igual a 1
+    {
+        cavalo--; // Decrementa 1 a variável cavalo para que ela possa se tornar menor que 1 e encerrar o loop
+        
+        
+        for (int i = 0; i < 2; i++) // Executa o comando enquanto a variável i for menor que 2, incrementa 1 a variável i para que ela se torne maior que 2 e encerre o loop 
+        {
+            printf("Baixo\n"); // Imprime "Baixo" no terminal até que "i" se torne maior que 2
+        }
+        printf("Esquerda\n"); // Imprime "Esquerda" no terminal até que "cavalo" se torne menor que 1
     }
     
     printf("\n"); // pula uma linha para organização do programa no terminal 
-
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
-
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
-
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
-
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
 
     // Nível Mestre - Funções Recursivas e Loops Aninhados
     // Sugestão: Substitua as movimentações das peças por funções recursivas.
