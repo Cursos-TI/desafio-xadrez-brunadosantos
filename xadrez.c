@@ -4,73 +4,88 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
-int main() {
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
-    
-    // Declaração das variáveis
-    int torre = 1;
-    int bispo = 1;
-    int cavalo = 1;
-
+void torre(int movimento){
     // Movimentação torre
-    // Cabeçalho movimento torre
-    printf("Movimentação da Torre\n");
-    printf("=====================\n");
-    while (torre <= 5) // Executa o comando enquanto a variável torre for menor ou igual a 5
-    { 
-        printf("Direita \n", torre); // Imprime "Direita" no terminal até que "torre" se torne menor ou igual a 5 e finalizar o loop
-        torre++; // incrementa 1 a variável torre
-    }
-    
-    // Movimentação bispo
-    // Cabeçalho movimento bispo
-    printf("\n");
-    printf("Movimentação do Bispo\n");
-    printf("=====================\n");
-    do // Faz o comando até que a condição se torne verdadeira
+    // Cinco casas para direita    
+    if (movimento > 0) // executa o código se movimento for maior que 0 
     {
-        printf("Cima, Direita \n", bispo); // Imprime "Cima, Direita" no terminal até que "bispo" se torne menor ou igual a 5
-        bispo++; // incrementa 1 a variável bispo para que ela possa se tornar maior ou igual a 5 e finalizar o loop
-    } while (bispo <= 5); // Executa o comando enquanto a variável bispo for menor ou igual a 5
-    
-    // Movimentação rainha
-    // Cabeçalho movimento rainha
-    printf("\n");
-    printf("Movimentação da Rainha\n");
-    printf("=====================\n");
-    
-    for (int rainha = 1; rainha <= 8; rainha++) // Executa o comando enquanto a variável rainha for menor ou igual a 8, incrementa 1 a variável rainha até que se torne maior que 8 e encerre o loop 
-    {
-        printf("Esquerda \n", rainha); // Imprime "Esquerda" no terminal até que "rainha" se torne maior ou igual a 8
+        printf("Direita\n"); // imprime "Direita" no terminal até que movimento se torne menor que 0
+        torre(movimento - 1); // subtrai 1 de movimento para que ele se torne menor que 0
     }
-    
-    // Movimentação cavalo
-    // Duas casas para baixo e uma para esquerda
-    printf("\n");
-    printf("Movimentação do Cavalo\n");
-    printf("=====================\n");
-    while (cavalo == 1) // Executa o comando enquanto a variável cavalo for igual a 1
-    {
-        cavalo--; // Decrementa 1 a variável cavalo para que ela possa se tornar menor que 1 e encerrar o loop
-        
-        
-        for (int i = 0; i < 2; i++) // Executa o comando enquanto a variável i for menor que 2, incrementa 1 a variável i para que ela se torne maior que 2 e encerre o loop 
-        {
-            printf("Baixo\n"); // Imprime "Baixo" no terminal até que "i" se torne maior que 2
-        }
-        printf("Esquerda\n"); // Imprime "Esquerda" no terminal até que "cavalo" se torne menor que 1
-    }
-    
-    printf("\n"); // pula uma linha para organização do programa no terminal 
+}
 
+void bispo(int movimento){
+    // Movimentação bispo
+    // Cinco casas para cima e para direita
+
+    for (movimento = 1; movimento <= 5; movimento++) // executa o código até que movimento seja maior ou igual a 5 
+    {
+        printf("Cima, "); // imprime "Cima" no terminal até que movimento seja maior ou igual a 5
+        for (int i = 1; i <= 5; i++){ // executa o código até que "i" seja meior ou igual a 5
+            printf("Direita\n"); // imprime "Direita" no terminal até que "i" seja maior ou igual a 5
+            break; // quebra o fluxo da repetição evitando que "Direita" seja impresso mais vezes que "Cima".
+        }
+    }
+}
+
+void rainha(int movimento){
+    // Movimentação rainha
+    // Oito casas para esquerda
+    if (movimento > 0) // executa o código se movimento for maior que 0 
+    {
+        printf("Esquerda\n"); // imprime "Esquerda" no terminal até que movimento se torne menor que 0
+        rainha(movimento - 1); // subtrai 1 de movimento para que ele se torne menor que 0
+    }
+}
+
+
+int main(){
     // Nível Mestre - Funções Recursivas e Loops Aninhados
     // Sugestão: Substitua as movimentações das peças por funções recursivas.
     // Exemplo: Crie uma função recursiva para o movimento do Bispo.
 
     // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
     // Inclua o uso de continue e break dentro dos loops.
+
+    // Declaração de variáveis
+    int cavalo = 1;
+    int casas;
+    // Chamada da função
+
+    // Cabeçalho torre
+    printf("Movimentação da Torre\n");
+    printf("=====================\n");
+    torre(5); // chama a função recursiva torre
+
+    // Cabeçalho bispo
+    printf("\n"); // pula uma linha para organização do programa no terminal
+    printf("Movimentação do Bispo\n");
+    printf("=====================\n");
+    bispo(casas); // chama a função recursiva bispo
+
+    // Cabeçalho rainha
+    printf("\n"); // pula uma linha para organização do programa no terminal
+    printf("Movimentação da Rainha\n");
+    printf("=====================\n");
+    rainha(8); // chama a função recursiva rainha
+    
+    // Movimentação cavalo
+    // Duas casas para cima e uma para direita
+    // Cabeçalho cavalo
+    printf("\n"); // pula uma linha para organização do programa no terminal
+    printf("Movimentação do Cavalo\n");
+    printf("=====================\n");
+    while (cavalo == 1) // enquanto "cavalo" for igual a 1 executa o código
+    {
+        cavalo--; // subtrai 1 de cavalo para que se torne menor que 1 e assim o código não entre em loop infinito
+        for (int i = 0; i < 2; i++) // enquanto "i" for menor que 2 ele executa o comando e soma mais 1 para que "i" se torne maior que 2
+        {
+            printf("Cima\n"); // imprime "Cima" no terminal até que "i" se torne maior que 2
+        }
+        printf("Direita\n"); // imprime "Direita" no terminal até que a estrutura de repetição for execute "Cima" duas vezes
+    }
+
+    printf("\n"); // pula uma linha para organização do programa no terminal
 
     return 0;
 }
